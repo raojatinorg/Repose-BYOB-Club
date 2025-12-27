@@ -3,975 +3,870 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Repose BYOB Club | Premium BYOB Experience in Rewari</title>
+    <title>REPOSE | The New Era of Nightlife</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;800&family=Manrope:wght@200;300;400;500;600&family=Italianno&display=swap" rel="stylesheet">
+    
     <style>
         :root {
-            --deep-wine: #8B0000;
-            --burgundy: #800020;
-            --soft-pink: #E8B4B8;
-            --matte-black: #1A1A1A;
-            --golden: #D4AF37;
-            --light-gold: #F4E4A6;
-            --dark-bg: #0A0A0A;
-            --section-padding: 5rem 1.5rem;
-            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+            --gold: #d4af37;
+            --gold-light: #f9e5a6;
+            --gold-dim: #8a7020;
+            --black: #080808;
+            --black-soft: #121212;
+            --white: #e0e0e0;
+            --glass: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(212, 175, 55, 0.15);
+            --transition: cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
+            cursor: none; /* Hiding default cursor for custom one */
         }
 
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--dark-bg);
-            color: #f5f5f5;
-            line-height: 1.6;
+            background-color: var(--black);
+            color: var(--white);
+            font-family: 'Manrope', sans-serif;
             overflow-x: hidden;
-        }
-
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Cinzel', serif;
-            font-weight: 700;
-            letter-spacing: 0.5px;
-        }
-
-        .container {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Button Styles */
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 14px 32px;
-            border-radius: 50px;
-            font-weight: 600;
-            text-decoration: none;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-size: 0.9rem;
-            transition: var(--transition);
-            cursor: pointer;
-            border: none;
-            gap: 10px;
-        }
-
-        .btn-primary {
-            background: linear-gradient(135deg, var(--golden), var(--light-gold));
-            color: var(--matte-black);
-            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.3);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 25px rgba(212, 175, 55, 0.5);
-        }
-
-        .btn-secondary {
-            background-color: transparent;
-            color: var(--light-gold);
-            border: 2px solid var(--golden);
-        }
-
-        .btn-secondary:hover {
-            background-color: rgba(212, 175, 55, 0.1);
-            transform: translateY(-5px);
-        }
-
-        .btn-small {
-            padding: 10px 24px;
-            font-size: 0.8rem;
-        }
-
-        /* Hero Section */
-        .hero {
             position: relative;
-            height: 100vh;
-            min-height: 700px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(rgba(10, 10, 10, 0.85), rgba(128, 0, 32, 0.3)), 
-                        url('https://images.unsplash.com/photo-1514525253161-7a46d19cd819?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80') center/cover no-repeat;
-            text-align: center;
-            overflow: hidden;
         }
 
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            max-width: 900px;
-            padding: 0 20px;
+        /* Film Grain Overlay */
+        .noise-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0.05;
+            background: url('data:image/svg+xml,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseFilter"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noiseFilter)" opacity="1"/%3E%3C/svg%3E');
         }
 
-        .logo-text {
-            font-family: 'Cinzel', serif;
-            font-size: 2.5rem;
-            font-weight: 800;
-            color: var(--light-gold);
-            margin-bottom: 10px;
-            letter-spacing: 3px;
-            text-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
-        }
-
-        .tagline {
-            font-size: 1rem;
-            color: var(--soft-pink);
-            letter-spacing: 8px;
-            margin-bottom: 40px;
-            text-transform: uppercase;
-        }
-
-        .hero h1 {
-            font-size: 4rem;
-            margin-bottom: 20px;
-            color: white;
-            line-height: 1.1;
-        }
-
-        .hero h1 span {
-            color: var(--golden);
-        }
-
-        .hero-subtitle {
-            font-size: 1.3rem;
-            color: #ddd;
-            margin-bottom: 40px;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        /* Confetti Animation */
-        #confetti-canvas {
-            position: absolute;
+        /* Custom Cursor */
+        .cursor-dot,
+        .cursor-outline {
+            position: fixed;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-        }
-
-        /* Section Styles */
-        section {
-            padding: var(--section-padding);
-            position: relative;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        .section-title h2 {
-            font-size: 2.5rem;
-            color: var(--light-gold);
-            margin-bottom: 10px;
-            position: relative;
-            display: inline-block;
-        }
-
-        .section-title h2:after {
-            content: '';
-            position: absolute;
-            width: 60%;
-            height: 3px;
-            background: linear-gradient(90deg, transparent, var(--golden), transparent);
-            bottom: -15px;
-            left: 20%;
-        }
-
-        .section-title p {
-            color: #ccc;
-            max-width: 700px;
-            margin: 20px auto 0;
-        }
-
-        /* About Section */
-        .about-section {
-            background-color: rgba(26, 26, 26, 0.8);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .about-section:before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -20%;
-            width: 500px;
-            height: 500px;
+            transform: translate(-50%, -50%);
             border-radius: 50%;
-            background: radial-gradient(circle, rgba(139, 0, 0, 0.15) 0%, rgba(26, 26, 26, 0) 70%);
+            z-index: 10000;
+            pointer-events: none;
         }
 
-        .about-cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+        .cursor-dot {
+            width: 8px;
+            height: 8px;
+            background-color: var(--gold);
         }
 
-        .about-card {
-            background: linear-gradient(145deg, rgba(40, 40, 40, 0.8), rgba(20, 20, 20, 0.9));
-            border-radius: 15px;
-            padding: 40px 30px;
-            text-align: center;
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
-            transition: var(--transition);
-            border: 1px solid rgba(212, 175, 55, 0.1);
-            position: relative;
+        .cursor-outline {
+            width: 40px;
+            height: 40px;
+            border: 1px solid var(--gold);
+            transition: width 0.2s, height 0.2s, background-color 0.2s;
+        }
+
+        body.hovering .cursor-outline {
+            width: 60px;
+            height: 60px;
+            background-color: rgba(212, 175, 55, 0.1);
+            border-color: transparent;
+            backdrop-filter: blur(2px);
+        }
+
+        /* Typography */
+        h1, h2, h3, h4 {
+            font-family: 'Cinzel', serif;
+            font-weight: 400;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        .script-font {
+            font-family: 'Italianno', cursive;
+            text-transform: none;
+            color: var(--gold);
+            font-size: 2.5rem;
+            line-height: 0.5;
+        }
+
+        /* Loader */
+        .loader {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: var(--black);
+            z-index: 99999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            transition: opacity 0.8s ease, visibility 0.8s ease;
+        }
+
+        .loader-text {
+            font-family: 'Cinzel', serif;
+            font-size: 2rem;
+            color: var(--gold);
+            letter-spacing: 5px;
             overflow: hidden;
+            white-space: nowrap;
+            border-right: 2px solid var(--gold);
+            animation: typing 2s steps(20, end), blink 0.75s step-end infinite;
         }
 
-        .about-card:hover {
-            transform: translateY(-10px);
-            border-color: rgba(212, 175, 55, 0.3);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+        @keyframes blink {
+            from, to { border-color: transparent }
+            50% { border-color: var(--gold) }
         }
 
-        .about-card:before {
-            content: '';
-            position: absolute;
+        .loader.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
             top: 0;
-            left: 0;
             width: 100%;
-            height: 5px;
-            background: linear-gradient(90deg, var(--deep-wine), var(--golden));
+            padding: 30px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            transition: padding 0.4s ease, background 0.4s ease;
+            mix-blend-mode: difference;
         }
 
-        .about-card h3 {
-            font-size: 1.8rem;
-            margin-bottom: 20px;
-            color: var(--light-gold);
+        nav.scrolled {
+            padding: 20px 50px;
+            background: rgba(8, 8, 8, 0.8);
+            backdrop-filter: blur(10px);
+            mix-blend-mode: normal;
+            border-bottom: 1px solid var(--glass-border);
         }
 
-        .about-card p {
-            color: #ccc;
-            font-size: 1.1rem;
-            line-height: 1.8;
+        .logo {
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--white);
+            text-decoration: none;
+            letter-spacing: 2px;
         }
 
-        /* Pricing Section */
-        .pricing-section {
-            background: linear-gradient(rgba(10, 10, 10, 0.9), rgba(10, 10, 10, 0.9)), 
-                        url('https://images.unsplash.com/photo-1519677100203-9ffc6d3b8e24?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80') center/cover no-repeat;
-            text-align: center;
+        .nav-items {
+            display: flex;
+            gap: 40px;
         }
 
-        .pricing-card {
-            background: linear-gradient(135deg, rgba(26, 26, 26, 0.9), rgba(40, 40, 40, 0.9));
-            border-radius: 20px;
-            padding: 50px 30px;
-            max-width: 800px;
-            margin: 0 auto;
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
-            border: 2px solid var(--golden);
+        .nav-link {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
             position: relative;
-            overflow: hidden;
+            opacity: 0.7;
+            transition: opacity 0.3s;
         }
 
-        .pricing-card:before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(212, 175, 55, 0.1) 0%, rgba(212, 175, 55, 0) 70%);
-            z-index: 1;
-        }
-
-        .pricing-card > * {
-            position: relative;
-            z-index: 2;
-        }
-
-        .pricing-title {
-            font-size: 2.2rem;
-            color: white;
-            margin-bottom: 20px;
-            background: linear-gradient(90deg, var(--golden), var(--light-gold));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-
-        .pricing-price {
-            font-size: 4.5rem;
-            font-weight: 800;
-            color: var(--light-gold);
-            margin: 30px 0;
-            text-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
-        }
-
-        .pricing-note {
-            font-style: italic;
-            color: var(--soft-pink);
-            margin-bottom: 30px;
-            font-size: 1.2rem;
-        }
-
-        /* Experience Section */
-        .experience-section {
-            background-color: rgba(26, 26, 26, 0.9);
-        }
-
-        .experience-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-        }
-
-        .experience-card {
-            background: linear-gradient(145deg, rgba(30, 30, 30, 0.9), rgba(20, 20, 20, 0.9));
-            border-radius: 15px;
-            padding: 40px 25px;
-            text-align: center;
-            transition: var(--transition);
-            border: 1px solid rgba(139, 0, 0, 0.2);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .experience-card:hover {
-            transform: translateY(-10px);
-            border-color: var(--deep-wine);
-            box-shadow: 0 15px 30px rgba(139, 0, 0, 0.2);
-        }
-
-        .experience-card:hover:before {
+        .nav-link:hover {
             opacity: 1;
         }
 
-        .experience-card:before {
+        .nav-link::after {
             content: '';
             position: absolute;
-            top: 0;
+            bottom: -5px;
             left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at top right, rgba(139, 0, 0, 0.1), transparent 70%);
-            opacity: 0;
-            transition: opacity 0.4s ease;
+            width: 0;
+            height: 1px;
+            background: var(--gold);
+            transition: width 0.4s var(--transition);
         }
 
-        .experience-icon {
-            font-size: 3rem;
-            color: var(--golden);
-            margin-bottom: 20px;
-            height: 80px;
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        header {
+            height: 100vh;
+            width: 100%;
+            position: relative;
+            overflow: hidden;
             display: flex;
             align-items: center;
             justify-content: center;
         }
 
-        .experience-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-            color: white;
-        }
-
-        .experience-card p {
-            color: #ccc;
-            font-size: 0.95rem;
-        }
-
-        /* Gallery Section */
-        .gallery-section {
-            background-color: var(--dark-bg);
-        }
-
-        .gallery-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            grid-auto-rows: 200px;
-            gap: 15px;
-            grid-auto-flow: dense;
-        }
-
-        .gallery-item {
-            border-radius: 10px;
-            overflow: hidden;
-            position: relative;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .gallery-item:hover {
-            transform: scale(1.03);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
-        }
-
-        .gallery-item:before {
-            content: '';
+        .hero-bg {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to bottom, transparent 50%, rgba(10, 10, 10, 0.8));
-            z-index: 1;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: url('https://images.unsplash.com/photo-1566737236500-c8ac43014a67?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+            filter: brightness(0.4) contrast(1.1);
+            transform: scale(1.1);
+            transition: transform 0.2s ease-out; /* Parallax handled by JS */
+            z-index: -1;
         }
 
-        .gallery-item img {
+        .hero-content {
+            text-align: center;
+            z-index: 2;
+            padding: 0 20px;
+        }
+
+        .hero-label {
+            display: block;
+            color: var(--gold);
+            font-size: 0.9rem;
+            letter-spacing: 4px;
+            margin-bottom: 1rem;
+            opacity: 0;
+            animation: fadeUp 1s ease 2.2s forwards;
+        }
+
+        .hero-title {
+            font-size: 6vw;
+            line-height: 1;
+            margin-bottom: 20px;
+            opacity: 0;
+            animation: fadeUp 1s ease 2.4s forwards;
+            background: linear-gradient(to right, #fff, #aaa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-title span {
+            display: block;
+            font-size: 2vw;
+            color: var(--gold);
+            -webkit-text-fill-color: var(--gold);
+            font-family: 'Italianno', cursive;
+            text-transform: none;
+            margin-bottom: -10px;
+            font-weight: 400;
+        }
+
+        .cta-container {
+            margin-top: 40px;
+            opacity: 0;
+            animation: fadeUp 1s ease 2.6s forwards;
+        }
+
+        /* Magnetic Button */
+        .magnetic-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 180px;
+            height: 180px;
+            border: 1px solid var(--glass-border);
+            border-radius: 50%;
+            color: var(--white);
+            text-decoration: none;
+            font-family: 'Cinzel', serif;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            position: relative;
+            background: rgba(20, 20, 20, 0.4);
+            backdrop-filter: blur(5px);
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), background 0.3s;
+        }
+
+        .magnetic-btn:hover {
+            background: rgba(212, 175, 55, 0.1);
+            border-color: var(--gold);
+        }
+
+        /* Marquee Strip */
+        .marquee-container {
+            width: 100%;
+            padding: 40px 0;
+            border-top: 1px solid var(--glass-border);
+            border-bottom: 1px solid var(--glass-border);
+            overflow: hidden;
+            background: var(--black-soft);
+            display: flex;
+            align-items: center;
+        }
+
+        .marquee-content {
+            display: flex;
+            white-space: nowrap;
+            animation: marquee 20s linear infinite;
+        }
+
+        .marquee-item {
+            font-family: 'Cinzel', serif;
+            font-size: 4rem;
+            color: transparent;
+            -webkit-text-stroke: 1px rgba(255, 255, 255, 0.2);
+            margin: 0 40px;
+            text-transform: uppercase;
+            font-weight: 700;
+            transition: color 0.3s;
+        }
+
+        .marquee-container:hover .marquee-item {
+            color: var(--gold);
+            -webkit-text-stroke: 0px;
+            opacity: 0.8;
+        }
+
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* Section Styling */
+        section {
+            padding: 120px 50px;
+            position: relative;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 80px;
+        }
+
+        .section-title h2 {
+            font-size: 3rem;
+            color: var(--white);
+        }
+
+        .section-title span {
+            color: var(--gold);
+            font-size: 1rem;
+            display: block;
+            margin-bottom: 10px;
+            letter-spacing: 3px;
+        }
+
+        /* 3D Tilt Cards (About) */
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .tilt-card {
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            padding: 40px;
+            border-radius: 4px;
+            position: relative;
+            transform-style: preserve-3d;
+            transform: perspective(1000px);
+            transition: transform 0.1s;
+        }
+
+        .tilt-card:hover {
+            border-color: var(--gold);
+        }
+
+        .card-num {
+            font-size: 4rem;
+            font-family: 'Cinzel', serif;
+            color: rgba(255, 255, 255, 0.05);
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            pointer-events: none;
+            transition: color 0.3s;
+        }
+
+        .tilt-card:hover .card-num {
+            color: rgba(212, 175, 55, 0.2);
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            margin: 20px 0;
+            color: var(--white);
+        }
+
+        .card-text {
+            color: #888;
+            font-weight: 300;
+            line-height: 1.6;
+        }
+
+        /* Horizontal Menu Scroll */
+        .h-scroll-container {
+            overflow-x: auto;
+            display: flex;
+            gap: 20px;
+            padding-bottom: 40px;
+            scrollbar-width: none;
+        }
+        
+        .h-scroll-container::-webkit-scrollbar {
+            display: none;
+        }
+
+        .menu-card {
+            min-width: 300px;
+            height: 400px;
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            flex-shrink: 0;
+            border: 1px solid transparent;
+            transition: 0.3s;
+        }
+
+        .menu-card img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.5s ease;
+            transition: transform 0.5s;
         }
 
-        .gallery-item:hover img {
+        .menu-card:hover img {
             transform: scale(1.1);
         }
 
-        .gallery-item:nth-child(3n) {
-            grid-column: span 2;
-            grid-row: span 2;
+        .menu-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px;
+            background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
         }
 
-        /* Location Section */
-        .location-section {
-            background: linear-gradient(rgba(10, 10, 10, 0.95), rgba(10, 10, 10, 0.95)), 
-                        url('https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80') center/cover no-repeat;
+        /* Reservation Section */
+        .reservation-section {
+            background: radial-gradient(circle at center, #1a1a1a 0%, #000 100%);
             text-align: center;
         }
 
-        .contact-info {
-            max-width: 700px;
-            margin: 0 auto;
-            background-color: rgba(26, 26, 26, 0.8);
-            padding: 40px;
-            border-radius: 15px;
-            border: 1px solid rgba(212, 175, 55, 0.2);
+        .gold-border-btn {
+            background: transparent;
+            color: var(--gold);
+            border: 1px solid var(--gold);
+            padding: 15px 40px;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: 0.3s;
+            margin-top: 30px;
+            display: inline-block;
+            text-decoration: none;
         }
 
-        .contact-info h3 {
-            font-size: 2rem;
-            color: var(--light-gold);
-            margin-bottom: 30px;
+        .gold-border-btn:hover {
+            background: var(--gold);
+            color: #000;
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
         }
 
-        .contact-details {
-            margin-bottom: 30px;
-        }
-
-        .contact-details p {
-            margin-bottom: 15px;
-            font-size: 1.1rem;
-            color: #ddd;
-        }
-
-        .contact-details i {
-            color: var(--golden);
-            margin-right: 10px;
-            width: 20px;
-        }
-
-        .location-buttons {
+        /* Countdown */
+        .countdown-strip {
             display: flex;
-            gap: 20px;
             justify-content: center;
-            flex-wrap: wrap;
+            gap: 40px;
+            margin-top: 40px;
+        }
+        
+        .cd-block {
+            text-align: center;
+        }
+
+        .cd-num {
+            font-size: 3rem;
+            font-family: 'Cinzel', serif;
+            color: var(--white);
+            display: block;
+        }
+
+        .cd-label {
+            font-size: 0.7rem;
+            color: var(--gold);
+            letter-spacing: 2px;
+            text-transform: uppercase;
         }
 
         /* Footer */
         footer {
-            background-color: var(--matte-black);
-            padding: 50px 20px 30px;
-            text-align: center;
-        }
-
-        .footer-logo {
-            font-family: 'Cinzel', serif;
-            font-size: 2.2rem;
-            font-weight: 800;
-            color: var(--light-gold);
-            margin-bottom: 10px;
-            letter-spacing: 2px;
-        }
-
-        .footer-tagline {
-            color: var(--soft-pink);
-            margin-bottom: 30px;
-            font-size: 1rem;
-        }
-
-        .hashtags {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding: 60px 50px;
             display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 15px;
-            margin-bottom: 30px;
+            justify-content: space-between;
+            align-items: flex-start;
         }
 
-        .hashtag {
-            background-color: rgba(139, 0, 0, 0.2);
-            color: #ddd;
-            padding: 8px 16px;
-            border-radius: 50px;
-            font-size: 0.9rem;
-            transition: var(--transition);
+        .footer-left h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
         }
 
-        .hashtag:hover {
-            background-color: rgba(139, 0, 0, 0.4);
-            color: white;
-            transform: translateY(-3px);
-        }
-
-        .copyright {
+        .socials a {
             color: #888;
-            font-size: 0.9rem;
-            margin-top: 30px;
-            padding-top: 20px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-right: 20px;
+            font-size: 1.2rem;
+            transition: 0.3s;
         }
 
-        /* Responsive Design */
-        @media (max-width: 992px) {
-            .hero h1 {
-                font-size: 3rem;
-            }
-            
-            .section-title h2 {
-                font-size: 2.2rem;
-            }
-            
-            .pricing-price {
-                font-size: 3.5rem;
-            }
+        .socials a:hover {
+            color: var(--gold);
         }
 
-        @media (max-width: 768px) {
-            .hero {
-                min-height: 600px;
-            }
-            
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-            
-            .hero-subtitle {
-                font-size: 1.1rem;
-            }
-            
-            .hero-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .hero-buttons .btn {
-                width: 100%;
-                max-width: 300px;
-            }
-            
-            .section-title h2 {
-                font-size: 2rem;
-            }
-            
-            .pricing-price {
-                font-size: 3rem;
-            }
-            
-            .gallery-container {
-                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-                grid-auto-rows: 150px;
-            }
-            
-            .contact-info {
-                padding: 30px 20px;
-            }
-            
-            .location-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .location-buttons .btn {
-                width: 100%;
-                max-width: 300px;
-            }
+        /* Animations */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        @media (max-width: 576px) {
-            :root {
-                --section-padding: 4rem 1rem;
-            }
-            
-            .hero h1 {
-                font-size: 2rem;
-            }
-            
-            .logo-text {
-                font-size: 2rem;
-            }
-            
-            .tagline {
-                font-size: 0.8rem;
-                letter-spacing: 5px;
-            }
-            
-            .section-title h2 {
-                font-size: 1.8rem;
-            }
-            
-            .about-card, .experience-card {
-                padding: 30px 20px;
-            }
-            
-            .pricing-card {
-                padding: 40px 20px;
-            }
-            
-            .pricing-title {
-                font-size: 1.8rem;
-            }
-            
-            .pricing-price {
-                font-size: 2.5rem;
-            }
-            
-            .gallery-item:nth-child(3n) {
-                grid-column: span 1;
-                grid-row: span 1;
-            }
-        }
-
-        /* Animation Classes */
-        .fade-in {
+        .reveal {
             opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
+            transform: translateY(50px);
+            transition: all 1s ease;
         }
 
-        .fade-in.visible {
+        .reveal.active {
             opacity: 1;
             transform: translateY(0);
+        }
+
+        /* Mobile Adjustments */
+        @media (max-width: 768px) {
+            .cursor-dot, .cursor-outline { display: none; }
+            * { cursor: auto; }
+            .hero-title { font-size: 3.5rem; }
+            .hero-title span { font-size: 1.5rem; }
+            .magnetic-btn { width: 140px; height: 140px; font-size: 0.8rem; }
+            .grid-3 { grid-template-columns: 1fr; }
+            .marquee-item { font-size: 2.5rem; }
+            nav { padding: 20px; }
+            .nav-items { display: none; } /* Add toggle for real prod */
+            section { padding: 80px 20px; }
+            footer { flex-direction: column; gap: 40px; }
         }
     </style>
 </head>
 <body>
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <canvas id="confetti-canvas"></canvas>
+
+    <!-- Noise Texture -->
+    <div class="noise-overlay"></div>
+
+    <!-- Custom Cursor -->
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
+    <!-- Preloader -->
+    <div class="loader">
+        <div class="loader-text">REPOSE BYOB</div>
+    </div>
+
+    <!-- Navbar -->
+    <nav>
+        <a href="#" class="logo hover-trigger">REPOSE</a>
+        <div class="nav-items">
+            <a href="#about" class="nav-link hover-trigger">The Club</a>
+            <a href="#menu" class="nav-link hover-trigger">Experience</a>
+            <a href="#events" class="nav-link hover-trigger">Events</a>
+            <a href="#contact" class="nav-link hover-trigger">Reserve</a>
+        </div>
+        <div class="mobile-menu-icon" style="color:white; display:none;"><i class="fas fa-bars"></i></div>
+    </nav>
+
+    <!-- Hero -->
+    <header id="home">
+        <div class="hero-bg" id="parallax-bg"></div>
         <div class="hero-content">
-            <div class="logo-text">Repose BYOB Club</div>
-            <div class="tagline">Cheers to 2026</div>
-            <h1>Repose BYOB – <span>Cheers to 2026</span></h1>
-            <p class="hero-subtitle">Where Rewari brings its own bottle, its own people, and its own mood.</p>
-            <div class="hero-buttons">
-                <a href="#pricing" class="btn btn-primary">
-                    <i class="fas fa-calendar-check"></i> Reserve Your Spot
-                </a>
-                <a href="tel:7833005300" class="btn btn-secondary">
-                    <i class="fas fa-phone-alt"></i> Call Now
-                </a>
-            </div>
-        </div>
-        <a href="#about" class="scroll-down">
-            <i class="fas fa-chevron-down"></i>
-        </a>
-    </section>
-
-<!-- About Section -->
-    <section class="about-section" id="about">
-        <div class="container">
-            <div class="section-title fade-in">
-                <h2>About Repose</h2>
-                <p>A premium BYOB space crafted for slow evenings, loud laughter, and memories worth saving.</p>
-            </div>
-            <div class="about-cards">
-                <div class="about-card fade-in">
-                    <h3>Walk in for the vibe.</h3>
-                    <p>Step into an atmosphere where elegance meets comfort. Our curated space is designed to create the perfect backdrop for your celebrations.</p>
-                </div>
-                <div class="about-card fade-in">
-                    <h3>Stay for the music.</h3>
-                    <p>Experience curated playlists and live DJ sets that keep the energy flowing from sunset till the early hours.</p>
-                </div>
-                <div class="about-card fade-in">
-                    <h3>Leave with stories.</h3>
-                    <p>Create unforgettable memories with friends old and new in a space designed for connection and celebration.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Pricing Section -->
-    <section class="pricing-section" id="pricing">
-        <div class="container">
-            <div class="pricing-card fade-in">
-                <h2 class="pricing-title">Unlimited Food • Unlimited Drinks • Unlimited Fun</h2>
-                <div class="pricing-price">₹3999<span style="font-size: 1.5rem;"> per couple</span></div>
-                <p class="pricing-note">Premium New Year Experience</p>
-                <a href="#contact" class="btn btn-primary btn-small">
-                    <i class="fas fa-ticket-alt"></i> Book Your Night
+            <span class="hero-label">ESTD. 2025 • REWARI</span>
+            <h1 class="hero-title">
+                <span class="script-font">The Art of</span>
+                NIGHTLIFE
+            </h1>
+            
+            <div class="cta-container">
+                <a href="#contact" class="magnetic-btn hover-trigger" id="magnetic-btn">
+                    <span>Reserve<br>Table</span>
                 </a>
             </div>
         </div>
-    </section>
+    </header>
 
-    <!-- Experience Section -->
-    <section class="experience-section" id="experience">
+    <!-- Marquee -->
+    <div class="marquee-container">
+        <div class="marquee-content">
+            <div class="marquee-item">Live Music</div>
+            <div class="marquee-item">Premium Dining</div>
+            <div class="marquee-item">Luxury Vibe</div>
+            <div class="marquee-item">Bring Your Own Bottle</div>
+            <div class="marquee-item">Live Music</div>
+            <div class="marquee-item">Premium Dining</div>
+            <div class="marquee-item">Luxury Vibe</div>
+            <div class="marquee-item">Bring Your Own Bottle</div>
+        </div>
+    </div>
+
+    <!-- About Section -->
+    <section id="about">
         <div class="container">
-            <div class="section-title fade-in">
-                <h2>The Repose Experience</h2>
-                <p>Every detail is crafted to elevate your evening</p>
+            <div class="section-header reveal">
+                <div class="section-title">
+                    <span>PHILOSOPHY</span>
+                    <h2>Not Just a Club,<br>A Lifestyle.</h2>
+                </div>
+                <p style="max-width: 400px; color: #888;">We believe the night is a canvas. At Repose, we provide the frame, the music, and the ambiance. You paint the memories.</p>
             </div>
-            <div class="experience-grid">
-                <div class="experience-card fade-in">
-                    <div class="experience-icon">
-                        <i class="fas fa-music"></i>
-                    </div>
-                    <h3>Curated Music & DJ Vibes</h3>
-                    <p>From deep house to Bollywood remixes, our soundscapes are designed to keep the energy perfect all night.</p>
+
+            <div class="grid-3">
+                <div class="tilt-card reveal hover-trigger">
+                    <span class="card-num">01</span>
+                    <i class="fas fa-wine-glass-alt" style="color: var(--gold); font-size: 2rem;"></i>
+                    <h3 class="card-title">Curated Mixology</h3>
+                    <p class="card-text">While you bring the spirits, we provide world-class mixers, garnishes, and glassware to elevate every sip.</p>
                 </div>
-                <div class="experience-card fade-in">
-                    <div class="experience-icon">
-                        <i class="fas fa-utensils"></i>
-                    </div>
-                    <h3>Unlimited Food Experience</h3>
-                    <p>Gourmet bites, savory snacks, and delectable desserts - all crafted to complement your evening.</p>
+                <div class="tilt-card reveal hover-trigger" style="transition-delay: 0.1s;">
+                    <span class="card-num">02</span>
+                    <i class="fas fa-music" style="color: var(--gold); font-size: 2rem;"></i>
+                    <h3 class="card-title">Sonic Identity</h3>
+                    <p class="card-text">From Jazz evenings to Deep House nights, our auditory landscape is tailored to the rhythm of the crowd.</p>
                 </div>
-                <div class="experience-card fade-in">
-                    <div class="experience-icon">
-                        <i class="fas fa-wine-bottle"></i>
-                    </div>
-                    <h3>Bring Your Own Bottle</h3>
-                    <p>Bring your favorite spirits and enjoy them in a premium setting with all the amenities of a luxury lounge.</p>
-                </div>
-                <div class="experience-card fade-in">
-                    <div class="experience-icon">
-                        <i class="fas fa-couch"></i>
-                    </div>
-                    <h3>Premium Lounge Ambience</h3>
-                    <p>Plush seating, ambient lighting, and Instagram-worthy corners create the perfect setting for your night.</p>
+                <div class="tilt-card reveal hover-trigger" style="transition-delay: 0.2s;">
+                    <span class="card-num">03</span>
+                    <i class="fas fa-crown" style="color: var(--gold); font-size: 2rem;"></i>
+                    <h3 class="card-title">Elite Service</h3>
+                    <p class="card-text">Table service that anticipates your needs before you do. Experience hospitality redefined.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Gallery Section -->
-    <section class="gallery-section" id="gallery">
+     <!-- Menu Highlights -->
+    <section id="menu" style="background: #0a0a0a;">
         <div class="container">
-            <div class="section-title fade-in">
-                <h2>Gallery</h2>
-                <p>Experience the vibe through our lens</p>
+            <div class="section-header reveal">
+                <div class="section-title">
+                    <span>TASTE</span>
+                    <h2>Culinary Excellence</h2>
+                </div>
+                <div class="nav-arrows">
+                    <!-- Can add slider controls here -->
+                </div>
             </div>
-            <div class="gallery-container">
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1566737236500-c8ac43014a67?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Club Ambience">
+
+            <div class="h-scroll-container reveal">
+                <!-- Card 1 -->
+                <div class="menu-card hover-trigger">
+                    <img src="https://images.unsplash.com/photo-1600891964092-4316c288032e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Steak">
+                    <div class="menu-info">
+                        <h3 style="color:white; margin-bottom:5px;">Signature Platter</h3>
+                        <p style="color:var(--gold); font-size:0.9rem;">Chef's Special Selection</p>
+                    </div>
                 </div>
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1572119865084-43d5c52fa5a6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Crowd Enjoying">
+                <!-- Card 2 -->
+                <div class="menu-card hover-trigger">
+                    <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Cocktail">
+                    <div class="menu-info">
+                        <h3 style="color:white; margin-bottom:5px;">Artisan Mixers</h3>
+                        <p style="color:var(--gold); font-size:0.9rem;">Fresh & Exotic</p>
+                    </div>
                 </div>
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="DJ Performance">
+                <!-- Card 3 -->
+                <div class="menu-card hover-trigger">
+                    <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Food">
+                    <div class="menu-info">
+                        <h3 style="color:white; margin-bottom:5px;">Gourmet Tapas</h3>
+                        <p style="color:var(--gold); font-size:0.9rem;">Perfect Pairings</p>
+                    </div>
                 </div>
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1516542076529-1ea3854896f2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1171&q=80" alt="Lounge Seating">
-                </div>
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80" alt="Night Lights">
-                </div>
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1541535650810-10d26f5c2ab3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Celebration">
+                 <!-- Card 4 -->
+                 <div class="menu-card hover-trigger">
+                    <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Lounge">
+                    <div class="menu-info">
+                        <h3 style="color:white; margin-bottom:5px;">Ambient Hookah</h3>
+                        <p style="color:var(--gold); font-size:0.9rem;">Premium Flavors</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Location & Contact Section -->
-    <section class="location-section" id="contact">
-        <div class="container">
-            <div class="contact-info fade-in">
-                <h3>Find Us in Rewari</h3>
-                <div class="contact-details">
-                    <p><i class="fas fa-map-marker-alt"></i> Bawal Road, near New Sabzi Mandi, Rewari, Haryana</p>
-                    <p><i class="fas fa-phone"></i> 78-3300-5300 | 78-3300-7300</p>
-                    <p><i class="fas fa-clock"></i> Open Daily: 6:00 PM - 2:00 AM</p>
-                    <p><i class="fas fa-calendar-star"></i> Special New Year Hours: 8:00 PM - 4:00 AM (Dec 31 - Jan 1)</p>
-                </div>
-                <div class="location-buttons">
-                    <a href="tel:7833005300" class="btn btn-primary">
-                        <i class="fas fa-phone-alt"></i> Call Now
-                    </a>
-                    <a href="https://maps.google.com/?q=Bawal+Road+near+New+Sabzi+Mandi+Rewari+Haryana" target="_blank" class="btn btn-secondary">
-                        <i class="fas fa-directions"></i> Get Directions
-                    </a>
-                </div>
+    <!-- Reservation / Events -->
+    <section id="contact" class="reservation-section">
+        <div class="container reveal">
+            <span style="color: var(--gold); letter-spacing: 4px; font-size: 0.9rem;">NEW YEAR'S EVE 2026</span>
+            <h2 style="font-size: 4rem; margin: 20px 0; font-family: 'Cinzel', serif;">The Golden Countdown</h2>
+            <p style="color: #aaa; max-width: 600px; margin: 0 auto;">Limited tables available for the most exclusive night in Rewari.</p>
+            
+            <div class="countdown-strip">
+                <div class="cd-block"><span class="cd-num" id="d">00</span><span class="cd-label">Days</span></div>
+                <div class="cd-block"><span class="cd-num" id="h">00</span><span class="cd-label">Hrs</span></div>
+                <div class="cd-block"><span class="cd-num" id="m">00</span><span class="cd-label">Mins</span></div>
+                <div class="cd-block"><span class="cd-num" id="s">00</span><span class="cd-label">Secs</span></div>
             </div>
+
+            <br><br>
+            <a href="tel:7833005300" class="gold-border-btn hover-trigger">Book Priority Access</a>
         </div>
     </section>
 
     <!-- Footer -->
     <footer>
-        <div class="container">
-            <div class="footer-logo">Repose BYOB Club</div>
-            <p class="footer-tagline">Cheers to 2026</p>
-            
-            <div class="hashtags">
-                <a href="#" class="hashtag">#Repose</a>
-                <a href="#" class="hashtag">#ReposeRewari</a>
-                <a href="#" class="hashtag">#BYOBRewari</a>
-                <a href="#" class="hashtag">#2026Vibes</a>
-                <a href="#" class="hashtag">#RewariNightlife</a>
-                <a href="#" class="hashtag">#GoodVibesOnly</a>
+        <div class="footer-left">
+            <a href="#" class="logo">REPOSE</a>
+            <p style="color: #666; margin-top: 20px; max-width: 300px;">
+                Bawal Road, Near New Sabzi Mandi<br>
+                Rewari, Haryana
+            </p>
+        </div>
+        <div class="footer-right">
+            <div class="socials">
+                <a href="#" class="hover-trigger"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="hover-trigger"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="hover-trigger"><i class="fab fa-whatsapp"></i></a>
             </div>
-            
-            <p class="copyright">Repose BYOB – Premium BYOB Club of Rewari<br>© 2025 Repose BYOB Club. All rights reserved.</p>
+            <p style="color: #444; margin-top: 20px; font-size: 0.8rem;">© 2025 Repose Club. Built for Luxury.</p>
         </div>
     </footer>
 
     <script>
-        // Confetti Animation
-        const confettiCanvas = document.getElementById('confetti-canvas');
-        const ctx = confettiCanvas.getContext('2d');
+        // 1. Preloader Logic
+        window.addEventListener('load', () => {
+            const loader = document.querySelector('.loader');
+            setTimeout(() => {
+                loader.classList.add('hidden');
+            }, 1500); // 1.5s delay for branding
+        });
+
+        // 2. Custom Cursor Logic
+        const cursorDot = document.querySelector('.cursor-dot');
+        const cursorOutline = document.querySelector('.cursor-outline');
         
-        confettiCanvas.width = window.innerWidth;
-        confettiCanvas.height = window.innerHeight;
+        window.addEventListener('mousemove', (e) => {
+            const posX = e.clientX;
+            const posY = e.clientY;
+
+            // Dot follows instantly
+            cursorDot.style.left = `${posX}px`;
+            cursorDot.style.top = `${posY}px`;
+
+            // Outline follows with slight delay (simulated via CSS transition or JS lag)
+            cursorOutline.animate({
+                left: `${posX}px`,
+                top: `${posY}px`
+            }, { duration: 500, fill: "forwards" });
+        });
+
+        // Hover Effect for links
+        const hoverTriggers = document.querySelectorAll('.hover-trigger');
+        hoverTriggers.forEach(trigger => {
+            trigger.addEventListener('mouseenter', () => {
+                document.body.classList.add('hovering');
+            });
+            trigger.addEventListener('mouseleave', () => {
+                document.body.classList.remove('hovering');
+            });
+        });
+
+        // 3. Magnetic Button Effect
+        const magneticBtn = document.getElementById('magnetic-btn');
         
-        const confettiParticles = [];
-        const confettiColors = ['#D4AF37', '#F4E4A6', '#E8B4B8', '#8B0000', '#FFFFFF'];
-        
-        class ConfettiParticle {
-            constructor() {
-                this.x = Math.random() * confettiCanvas.width;
-                this.y = Math.random() * confettiCanvas.height - confettiCanvas.height;
-                this.size = Math.random() * 10 + 5;
-                this.speed = Math.random() * 3 + 2;
-                this.color = confettiColors[Math.floor(Math.random() * confettiColors.length)];
-                this.wobble = Math.random() * 10;
-                this.wobbleSpeed = Math.random() * 0.05 + 0.01;
-                this.wobbleOffset = Math.random() * Math.PI * 2;
-                this.shape = Math.random() > 0.5 ? 'circle' : 'rect';
-            }
+        magneticBtn.addEventListener('mousemove', (e) => {
+            const rect = magneticBtn.getBoundingClientRect();
+            const x = e.clientX - rect.left - rect.width / 2;
+            const y = e.clientY - rect.top - rect.height / 2;
             
-            update() {
-                this.y += this.speed;
-                this.x += Math.sin(Date.now() * this.wobbleSpeed + this.wobbleOffset) * 0.5;
-                
-                if (this.y > confettiCanvas.height) {
-                    this.y = -10;
-                    this.x = Math.random() * confettiCanvas.width;
+            // Move button slightly towards mouse
+            magneticBtn.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
+        });
+
+        magneticBtn.addEventListener('mouseleave', () => {
+            magneticBtn.style.transform = `translate(0px, 0px)`;
+        });
+
+        // 4. Parallax Background
+        const heroBg = document.getElementById('parallax-bg');
+        window.addEventListener('scroll', () => {
+            let offset = window.scrollY;
+            heroBg.style.transform = `scale(1.1) translateY(${offset * 0.5}px)`;
+            
+            // Navbar Scroll
+            const nav = document.querySelector('nav');
+            if (offset > 50) nav.classList.add('scrolled');
+            else nav.classList.remove('scrolled');
+        });
+
+        // 5. Scroll Reveal Animation
+        const reveals = document.querySelectorAll('.reveal');
+        
+        const revealOnScroll = () => {
+            const windowHeight = window.innerHeight;
+            const elementVisible = 150;
+
+            reveals.forEach((reveal) => {
+                const elementTop = reveal.getBoundingClientRect().top;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveal.classList.add('active');
                 }
-            }
-            
-            draw() {
-                ctx.beginPath();
-                ctx.fillStyle = this.color;
-                
-                if (this.shape === 'circle') {
-                    ctx.arc(this.x, this.y, this.size / 2, 0, Math.PI * 2);
-                } else {
-                    const width = this.size;
-                    const height = this.size * 0.6;
-                    ctx.fillRect(this.x - width/2, this.y - height/2, width, height);
-                }
-                
-                ctx.fill();
-            }
-        }
-        
-        // Create confetti particles
-        for (let i = 0; i < 80; i++) {
-            confettiParticles.push(new ConfettiParticle());
-        }
-        
-        function animateConfetti() {
-            ctx.clearRect(0, 0, confettiCanvas.width, confettiCanvas.height);
-            
-            for (let particle of confettiParticles) {
-                particle.update();
-                particle.draw();
-            }
-            
-            requestAnimationFrame(animateConfetti);
-        }
-        
-        // Start confetti animation
-        animateConfetti();
-        
-        // Scroll animations
-        const fadeElements = document.querySelectorAll('.fade-in');
-        
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
+            });
         };
+        window.addEventListener('scroll', revealOnScroll);
+
+        // 6. Countdown Timer
+        const targetDate = new Date('December 31, 2025 20:00:00').getTime();
+        setInterval(() => {
+            const now = new Date().getTime();
+            const diff = targetDate - now;
+
+            const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const s = Math.floor((diff % (1000 * 60)) / 1000);
+
+            document.getElementById('d').innerText = d < 10 ? '0' + d : d;
+            document.getElementById('h').innerText = h < 10 ? '0' + h : h;
+            document.getElementById('m').innerText = m < 10 ? '0' + m : m;
+            document.getElementById('s').innerText = s < 10 ? '0' + s : s;
+        }, 1000);
+
+        // 7. 3D Tilt Effect on Cards (Vanilla JS)
+        const cards = document.querySelectorAll('.tilt-card');
         
-        const observer = new IntersectionObserver(function(entries) {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
-        
-        fadeElements.forEach(element => {
-            observer.observe(element);
-        });
-        
-        // Handle window resize
-        window.addEventListener('resize', function() {
-            confettiCanvas.width = window.innerWidth;
-            confettiCanvas.height = window.innerHeight;
-        });
-        
-        // Smooth scroll for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
+        cards.forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
                 
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
                 
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                }
+                const rotateX = ((y - centerY) / centerY) * -10; // Max 10deg rotation
+                const rotateY = ((x - centerX) / centerX) * 10;
+
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+            });
+
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = `perspective(1000px) rotateX(0) rotateY(0)`;
             });
         });
-        
-        // Add current year to footer
-        document.addEventListener('DOMContentLoaded', function() {
-            const yearSpan = document.getElementById('current-year');
-            if (yearSpan) {
-                yearSpan.textContent = new Date().getFullYear();
-            }
-            
-            // Add scroll effect to hero section
-            const hero = document.querySelector('.hero');
-            window.addEventListener('scroll', function() {
-                const scrolled = window.pageYOffset;
-                const rate = scrolled * -0.5;
-                hero.style.transform = `translate3d(0px, ${rate}px, 0px)`;
-            });
-        });
+
     </script>
 </body>
 </html>
