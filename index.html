@@ -1,0 +1,977 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Repose BYOB Club | Premium BYOB Experience in Rewari</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --deep-wine: #8B0000;
+            --burgundy: #800020;
+            --soft-pink: #E8B4B8;
+            --matte-black: #1A1A1A;
+            --golden: #D4AF37;
+            --light-gold: #F4E4A6;
+            --dark-bg: #0A0A0A;
+            --section-padding: 5rem 1.5rem;
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--dark-bg);
+            color: #f5f5f5;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Button Styles */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 32px;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+            transition: var(--transition);
+            cursor: pointer;
+            border: none;
+            gap: 10px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--golden), var(--light-gold));
+            color: var(--matte-black);
+            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(212, 175, 55, 0.5);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--light-gold);
+            border: 2px solid var(--golden);
+        }
+
+        .btn-secondary:hover {
+            background-color: rgba(212, 175, 55, 0.1);
+            transform: translateY(-5px);
+        }
+
+        .btn-small {
+            padding: 10px 24px;
+            font-size: 0.8rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 100vh;
+            min-height: 700px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(rgba(10, 10, 10, 0.85), rgba(128, 0, 32, 0.3)), 
+                        url('https://images.unsplash.com/photo-1514525253161-7a46d19cd819?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80') center/cover no-repeat;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            padding: 0 20px;
+        }
+
+        .logo-text {
+            font-family: 'Cinzel', serif;
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--light-gold);
+            margin-bottom: 10px;
+            letter-spacing: 3px;
+            text-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+        }
+
+        .tagline {
+            font-size: 1rem;
+            color: var(--soft-pink);
+            letter-spacing: 8px;
+            margin-bottom: 40px;
+            text-transform: uppercase;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            color: white;
+            line-height: 1.1;
+        }
+
+        .hero h1 span {
+            color: var(--golden);
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            color: #ddd;
+            margin-bottom: 40px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* Confetti Animation */
+        #confetti-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        /* Section Styles */
+        section {
+            padding: var(--section-padding);
+            position: relative;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--light-gold);
+            margin-bottom: 10px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            width: 60%;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--golden), transparent);
+            bottom: -15px;
+            left: 20%;
+        }
+
+        .section-title p {
+            color: #ccc;
+            max-width: 700px;
+            margin: 20px auto 0;
+        }
+
+        /* About Section */
+        .about-section {
+            background-color: rgba(26, 26, 26, 0.8);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-section:before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(139, 0, 0, 0.15) 0%, rgba(26, 26, 26, 0) 70%);
+        }
+
+        .about-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .about-card {
+            background: linear-gradient(145deg, rgba(40, 40, 40, 0.8), rgba(20, 20, 20, 0.9));
+            border-radius: 15px;
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            transition: var(--transition);
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(212, 175, 55, 0.3);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .about-card:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--deep-wine), var(--golden));
+        }
+
+        .about-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--light-gold);
+        }
+
+        .about-card p {
+            color: #ccc;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        /* Pricing Section */
+        .pricing-section {
+            background: linear-gradient(rgba(10, 10, 10, 0.9), rgba(10, 10, 10, 0.9)), 
+                        url('https://images.unsplash.com/photo-1519677100203-9ffc6d3b8e24?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80') center/cover no-repeat;
+            text-align: center;
+        }
+
+        .pricing-card {
+            background: linear-gradient(135deg, rgba(26, 26, 26, 0.9), rgba(40, 40, 40, 0.9));
+            border-radius: 20px;
+            padding: 50px 30px;
+            max-width: 800px;
+            margin: 0 auto;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+            border: 2px solid var(--golden);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pricing-card:before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.1) 0%, rgba(212, 175, 55, 0) 70%);
+            z-index: 1;
+        }
+
+        .pricing-card > * {
+            position: relative;
+            z-index: 2;
+        }
+
+        .pricing-title {
+            font-size: 2.2rem;
+            color: white;
+            margin-bottom: 20px;
+            background: linear-gradient(90deg, var(--golden), var(--light-gold));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .pricing-price {
+            font-size: 4.5rem;
+            font-weight: 800;
+            color: var(--light-gold);
+            margin: 30px 0;
+            text-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        .pricing-note {
+            font-style: italic;
+            color: var(--soft-pink);
+            margin-bottom: 30px;
+            font-size: 1.2rem;
+        }
+
+        /* Experience Section */
+        .experience-section {
+            background-color: rgba(26, 26, 26, 0.9);
+        }
+
+        .experience-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .experience-card {
+            background: linear-gradient(145deg, rgba(30, 30, 30, 0.9), rgba(20, 20, 20, 0.9));
+            border-radius: 15px;
+            padding: 40px 25px;
+            text-align: center;
+            transition: var(--transition);
+            border: 1px solid rgba(139, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .experience-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--deep-wine);
+            box-shadow: 0 15px 30px rgba(139, 0, 0, 0.2);
+        }
+
+        .experience-card:hover:before {
+            opacity: 1;
+        }
+
+        .experience-card:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at top right, rgba(139, 0, 0, 0.1), transparent 70%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .experience-icon {
+            font-size: 3rem;
+            color: var(--golden);
+            margin-bottom: 20px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .experience-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: white;
+        }
+
+        .experience-card p {
+            color: #ccc;
+            font-size: 0.95rem;
+        }
+
+        /* Gallery Section */
+        .gallery-section {
+            background-color: var(--dark-bg);
+        }
+
+        .gallery-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            grid-auto-rows: 200px;
+            gap: 15px;
+            grid-auto-flow: dense;
+        }
+
+        .gallery-item {
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.03);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .gallery-item:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent 50%, rgba(10, 10, 10, 0.8));
+            z-index: 1;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-item:nth-child(3n) {
+            grid-column: span 2;
+            grid-row: span 2;
+        }
+
+        /* Location Section */
+        .location-section {
+            background: linear-gradient(rgba(10, 10, 10, 0.95), rgba(10, 10, 10, 0.95)), 
+                        url('https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80') center/cover no-repeat;
+            text-align: center;
+        }
+
+        .contact-info {
+            max-width: 700px;
+            margin: 0 auto;
+            background-color: rgba(26, 26, 26, 0.8);
+            padding: 40px;
+            border-radius: 15px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .contact-info h3 {
+            font-size: 2rem;
+            color: var(--light-gold);
+            margin-bottom: 30px;
+        }
+
+        .contact-details {
+            margin-bottom: 30px;
+        }
+
+        .contact-details p {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            color: #ddd;
+        }
+
+        .contact-details i {
+            color: var(--golden);
+            margin-right: 10px;
+            width: 20px;
+        }
+
+        .location-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--matte-black);
+            padding: 50px 20px 30px;
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-family: 'Cinzel', serif;
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--light-gold);
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+
+        .footer-tagline {
+            color: var(--soft-pink);
+            margin-bottom: 30px;
+            font-size: 1rem;
+        }
+
+        .hashtags {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .hashtag {
+            background-color: rgba(139, 0, 0, 0.2);
+            color: #ddd;
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+
+        .hashtag:hover {
+            background-color: rgba(139, 0, 0, 0.4);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            color: #888;
+            font-size: 0.9rem;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2.2rem;
+            }
+            
+            .pricing-price {
+                font-size: 3.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                min-height: 600px;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .hero-buttons .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .pricing-price {
+                font-size: 3rem;
+            }
+            
+            .gallery-container {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+                grid-auto-rows: 150px;
+            }
+            
+            .contact-info {
+                padding: 30px 20px;
+            }
+            
+            .location-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .location-buttons .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            :root {
+                --section-padding: 4rem 1rem;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .logo-text {
+                font-size: 2rem;
+            }
+            
+            .tagline {
+                font-size: 0.8rem;
+                letter-spacing: 5px;
+            }
+            
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+            
+            .about-card, .experience-card {
+                padding: 30px 20px;
+            }
+            
+            .pricing-card {
+                padding: 40px 20px;
+            }
+            
+            .pricing-title {
+                font-size: 1.8rem;
+            }
+            
+            .pricing-price {
+                font-size: 2.5rem;
+            }
+            
+            .gallery-item:nth-child(3n) {
+                grid-column: span 1;
+                grid-row: span 1;
+            }
+        }
+
+        /* Animation Classes */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <canvas id="confetti-canvas"></canvas>
+        <div class="hero-content">
+            <div class="logo-text">Repose BYOB Club</div>
+            <div class="tagline">Cheers to 2026</div>
+            <h1>Repose BYOB – <span>Cheers to 2026</span></h1>
+            <p class="hero-subtitle">Where Rewari brings its own bottle, its own people, and its own mood.</p>
+            <div class="hero-buttons">
+                <a href="#pricing" class="btn btn-primary">
+                    <i class="fas fa-calendar-check"></i> Reserve Your Spot
+                </a>
+                <a href="tel:7833005300" class="btn btn-secondary">
+                    <i class="fas fa-phone-alt"></i> Call Now
+                </a>
+            </div>
+        </div>
+        <a href="#about" class="scroll-down">
+            <i class="fas fa-chevron-down"></i>
+        </a>
+    </section>
+
+<!-- About Section -->
+    <section class="about-section" id="about">
+        <div class="container">
+            <div class="section-title fade-in">
+                <h2>About Repose</h2>
+                <p>A premium BYOB space crafted for slow evenings, loud laughter, and memories worth saving.</p>
+            </div>
+            <div class="about-cards">
+                <div class="about-card fade-in">
+                    <h3>Walk in for the vibe.</h3>
+                    <p>Step into an atmosphere where elegance meets comfort. Our curated space is designed to create the perfect backdrop for your celebrations.</p>
+                </div>
+                <div class="about-card fade-in">
+                    <h3>Stay for the music.</h3>
+                    <p>Experience curated playlists and live DJ sets that keep the energy flowing from sunset till the early hours.</p>
+                </div>
+                <div class="about-card fade-in">
+                    <h3>Leave with stories.</h3>
+                    <p>Create unforgettable memories with friends old and new in a space designed for connection and celebration.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing-section" id="pricing">
+        <div class="container">
+            <div class="pricing-card fade-in">
+                <h2 class="pricing-title">Unlimited Food • Unlimited Drinks • Unlimited Fun</h2>
+                <div class="pricing-price">₹3999<span style="font-size: 1.5rem;"> per couple</span></div>
+                <p class="pricing-note">Premium New Year Experience</p>
+                <a href="#contact" class="btn btn-primary btn-small">
+                    <i class="fas fa-ticket-alt"></i> Book Your Night
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section class="experience-section" id="experience">
+        <div class="container">
+            <div class="section-title fade-in">
+                <h2>The Repose Experience</h2>
+                <p>Every detail is crafted to elevate your evening</p>
+            </div>
+            <div class="experience-grid">
+                <div class="experience-card fade-in">
+                    <div class="experience-icon">
+                        <i class="fas fa-music"></i>
+                    </div>
+                    <h3>Curated Music & DJ Vibes</h3>
+                    <p>From deep house to Bollywood remixes, our soundscapes are designed to keep the energy perfect all night.</p>
+                </div>
+                <div class="experience-card fade-in">
+                    <div class="experience-icon">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <h3>Unlimited Food Experience</h3>
+                    <p>Gourmet bites, savory snacks, and delectable desserts - all crafted to complement your evening.</p>
+                </div>
+                <div class="experience-card fade-in">
+                    <div class="experience-icon">
+                        <i class="fas fa-wine-bottle"></i>
+                    </div>
+                    <h3>Bring Your Own Bottle</h3>
+                    <p>Bring your favorite spirits and enjoy them in a premium setting with all the amenities of a luxury lounge.</p>
+                </div>
+                <div class="experience-card fade-in">
+                    <div class="experience-icon">
+                        <i class="fas fa-couch"></i>
+                    </div>
+                    <h3>Premium Lounge Ambience</h3>
+                    <p>Plush seating, ambient lighting, and Instagram-worthy corners create the perfect setting for your night.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery-section" id="gallery">
+        <div class="container">
+            <div class="section-title fade-in">
+                <h2>Gallery</h2>
+                <p>Experience the vibe through our lens</p>
+            </div>
+            <div class="gallery-container">
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1566737236500-c8ac43014a67?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Club Ambience">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1572119865084-43d5c52fa5a6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Crowd Enjoying">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="DJ Performance">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1516542076529-1ea3854896f2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1171&q=80" alt="Lounge Seating">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80" alt="Night Lights">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1541535650810-10d26f5c2ab3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Celebration">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location & Contact Section -->
+    <section class="location-section" id="contact">
+        <div class="container">
+            <div class="contact-info fade-in">
+                <h3>Find Us in Rewari</h3>
+                <div class="contact-details">
+                    <p><i class="fas fa-map-marker-alt"></i> Bawal Road, near New Sabzi Mandi, Rewari, Haryana</p>
+                    <p><i class="fas fa-phone"></i> 78-3300-5300 | 78-3300-7300</p>
+                    <p><i class="fas fa-clock"></i> Open Daily: 6:00 PM - 2:00 AM</p>
+                    <p><i class="fas fa-calendar-star"></i> Special New Year Hours: 8:00 PM - 4:00 AM (Dec 31 - Jan 1)</p>
+                </div>
+                <div class="location-buttons">
+                    <a href="tel:7833005300" class="btn btn-primary">
+                        <i class="fas fa-phone-alt"></i> Call Now
+                    </a>
+                    <a href="https://maps.google.com/?q=Bawal+Road+near+New+Sabzi+Mandi+Rewari+Haryana" target="_blank" class="btn btn-secondary">
+                        <i class="fas fa-directions"></i> Get Directions
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-logo">Repose BYOB Club</div>
+            <p class="footer-tagline">Cheers to 2026</p>
+            
+            <div class="hashtags">
+                <a href="#" class="hashtag">#Repose</a>
+                <a href="#" class="hashtag">#ReposeRewari</a>
+                <a href="#" class="hashtag">#BYOBRewari</a>
+                <a href="#" class="hashtag">#2026Vibes</a>
+                <a href="#" class="hashtag">#RewariNightlife</a>
+                <a href="#" class="hashtag">#GoodVibesOnly</a>
+            </div>
+            
+            <p class="copyright">Repose BYOB – Premium BYOB Club of Rewari<br>© 2025 Repose BYOB Club. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Confetti Animation
+        const confettiCanvas = document.getElementById('confetti-canvas');
+        const ctx = confettiCanvas.getContext('2d');
+        
+        confettiCanvas.width = window.innerWidth;
+        confettiCanvas.height = window.innerHeight;
+        
+        const confettiParticles = [];
+        const confettiColors = ['#D4AF37', '#F4E4A6', '#E8B4B8', '#8B0000', '#FFFFFF'];
+        
+        class ConfettiParticle {
+            constructor() {
+                this.x = Math.random() * confettiCanvas.width;
+                this.y = Math.random() * confettiCanvas.height - confettiCanvas.height;
+                this.size = Math.random() * 10 + 5;
+                this.speed = Math.random() * 3 + 2;
+                this.color = confettiColors[Math.floor(Math.random() * confettiColors.length)];
+                this.wobble = Math.random() * 10;
+                this.wobbleSpeed = Math.random() * 0.05 + 0.01;
+                this.wobbleOffset = Math.random() * Math.PI * 2;
+                this.shape = Math.random() > 0.5 ? 'circle' : 'rect';
+            }
+            
+            update() {
+                this.y += this.speed;
+                this.x += Math.sin(Date.now() * this.wobbleSpeed + this.wobbleOffset) * 0.5;
+                
+                if (this.y > confettiCanvas.height) {
+                    this.y = -10;
+                    this.x = Math.random() * confettiCanvas.width;
+                }
+            }
+            
+            draw() {
+                ctx.beginPath();
+                ctx.fillStyle = this.color;
+                
+                if (this.shape === 'circle') {
+                    ctx.arc(this.x, this.y, this.size / 2, 0, Math.PI * 2);
+                } else {
+                    const width = this.size;
+                    const height = this.size * 0.6;
+                    ctx.fillRect(this.x - width/2, this.y - height/2, width, height);
+                }
+                
+                ctx.fill();
+            }
+        }
+        
+        // Create confetti particles
+        for (let i = 0; i < 80; i++) {
+            confettiParticles.push(new ConfettiParticle());
+        }
+        
+        function animateConfetti() {
+            ctx.clearRect(0, 0, confettiCanvas.width, confettiCanvas.height);
+            
+            for (let particle of confettiParticles) {
+                particle.update();
+                particle.draw();
+            }
+            
+            requestAnimationFrame(animateConfetti);
+        }
+        
+        // Start confetti animation
+        animateConfetti();
+        
+        // Scroll animations
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+        
+        fadeElements.forEach(element => {
+            observer.observe(element);
+        });
+        
+        // Handle window resize
+        window.addEventListener('resize', function() {
+            confettiCanvas.width = window.innerWidth;
+            confettiCanvas.height = window.innerHeight;
+        });
+        
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Add current year to footer
+        document.addEventListener('DOMContentLoaded', function() {
+            const yearSpan = document.getElementById('current-year');
+            if (yearSpan) {
+                yearSpan.textContent = new Date().getFullYear();
+            }
+            
+            // Add scroll effect to hero section
+            const hero = document.querySelector('.hero');
+            window.addEventListener('scroll', function() {
+                const scrolled = window.pageYOffset;
+                const rate = scrolled * -0.5;
+                hero.style.transform = `translate3d(0px, ${rate}px, 0px)`;
+            });
+        });
+    </script>
+</body>
+</html>
